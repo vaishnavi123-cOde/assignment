@@ -1,49 +1,41 @@
+# 3D Mesh Generator
 
-3D Model Generator
-=================
+This Python script generates 3D meshes for two simple objects: a pillow and a ball. The meshes are saved in Wavefront OBJ format.
 
-A Python-based tool for generating 3D models from text and images.
+## Features
 
-Installation
-------------
-1. Clone the repository:
-   git clone https://github.com//3d-model-generator.git
+- Creates a pillow mesh with a curved top surface and flat bottom
+- Creates a spherical ball mesh
+- Exports meshes to standard OBJ format
+- Configurable parameters for size and resolution
 
-2. Install dependencies:
-   pip install -r requirements.txt
+## Generated Meshes
 
-Required packages:
-- numpy
-- Pillow
-- open3d (optional for visualization)
+1. Pillow (outputs/pillow.obj):
+   - Dimensions: 2.0 x 0.5 x 1.5 (width x height x depth)
+   - Vertices: 800
+   - Faces: 1,444
+   - Features a subtle bulge in the middle for realistic pillow effect
 
-Quick Start
-----------
-1. Basic usage:
-   python main.py --mode text --input "cube"
-   python main.py --mode image --input "input_image.jpg"
+2. Ball (outputs/ball.obj):
+   - Radius: 1.0
+   - Vertices: 400
+   - Faces: 722
+   - Perfect sphere generated using spherical coordinates
 
-2. Generated models will be saved in the 'outputs' directory
+## Functions
 
-Project Structure
----------------
-├── main.py              # Main program file
-├── requirements.txt     # Package dependencies
-├── README.md           # This file
-├── doc/                # Documentation
-│   ├── documentation.txt    # User documentation
-│   └── technical_spec.txt   # Technical specifications
-├── models/             # (Optional) Pretrained models
-└── outputs/            # Generated 3D models
+- `create_pillow_mesh(width=2.0, height=0.5, depth=1.5, resolution=20)`
+- `create_ball_mesh(radius=1.0, resolution=20)`
+- `save_obj(vertices, faces, filename)`
 
-License
--------
-MIT License
+## Output Format
 
-Contributing
------------
-1. Fork the repository
-2. Create your feature branch
-3. Submit a pull request
+The meshes are saved in standard OBJ format:
+- Vertices are defined with 'v' followed by x, y, z coordinates
+- Faces are defined with 'f' followed by vertex indices (1-based)
 
+## Dependencies
 
+- NumPy
+- os (standard library)
